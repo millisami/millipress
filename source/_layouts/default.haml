@@ -1,18 +1,20 @@
 ---
 blog_title: My Octopress Blog
 
-twitter_user: 
-tweet_count: 3
-show_replies: false
+#no_sidebar: true
 
-delicious_user: 
-delicious_count: 3
+#twitter_user: 
+#tweet_count: 3
+#show_replies: false
 
-full_url: 
-disqus_short_name: 
+#delicious_user: 
+#delicious_count: 3
 
-google_custom_search_id:
-google_analytics_tracking_id:
+#full_url: 
+#disqus_short_name: 
+
+#google_custom_search_id:
+#google_analytics_tracking_id:
 
 ---
 
@@ -39,7 +41,7 @@ google_analytics_tracking_id:
       %script(src="http://www.google-analytics.com/ga.js" type="text/javascript")
   %body(id="#{(page.respond_to?(:body_id) ? page.body_id : nil)}")
     #header
-      .page_width
+      .container_12.grid_12
         %a.title(href="/")=page.blog_title
         - if page.respond_to? :google_custom_search_id
           #search
@@ -48,17 +50,17 @@ google_analytics_tracking_id:
               %input(type="hidden" name="ie" value="UTF-8")
               %input#q(type="text" name="q")
     #nav
-      .page_width
+      .container_12.grid_12
         %ul
-          %li.alpha
+          %li.alpha(class="#{(page.respond_to?(:nav) && (page.nav == 'blog') || !page.respond_to?(:nav) ? 'here' : nil)}")
             %a(href="/") Blog
-          %li.omega
-            %a(href="/about.html") About
+          %li.omega(class="#{(page.respond_to?(:nav) && (page.nav == 'work') ? 'here' : nil)}")
+            %a(href="/work") Work
           %li.subscribe
             %a(href="/atom.xml") Subscribe
     #page
-      .page_width
-        #main
+      .page_inner.container_12
+        #main(class="#{(page.respond_to?(:no_sidebar) ? 'grid_12' : 'grid_8')}")
           - if page.respond_to? :date
             .blog
               .article
@@ -76,16 +78,19 @@ google_analytics_tracking_id:
                 %script(type="text/javascript" src="http://disqus.com/forums/#{page.disqus_short_name}/embed.js")
           - else
             = preserve rp(content)
-        #sidebar
-          - if page.respond_to? :twitter_user
-            %h4 Twitter <a class="small" href="http://twitter.com/#{page.twitter_user}">@#{page.twitter_user}</a>
-            #twitter
-              %ul#twitter_status
-                Status updating...
-          - if page.respond_to? :delicious_user
-            %h4 My Delicious <a class="small" href="http://delicious.com/#{page.delicious_user}">more &rarr;</a>
-            #delicious
-              %script(type="text/javascript" src="http://feeds.delicious.com/v2/js/#{page.delicious_user}?title=&count=#{page.delicious_count}&sort=date&extended")
+        - unless page.respond_to? :no_sidebar
+          #sidebar.grid_4
+            %p
+              I'm a freelancer.
+            - if page.respond_to? :twitter_user
+              %h4 Twitter <a class="small" href="http://twitter.com/#{page.twitter_user}">@#{page.twitter_user}</a>
+              #twitter
+                %ul#twitter_status
+                  Status updating...
+            - if page.respond_to? :delicious_user
+              %h4 My Delicious <a class="small" href="http://delicious.com/#{page.delicious_user}">more &rarr;</a>
+              #delicious
+                %script(type="text/javascript" src="http://feeds.delicious.com/v2/js/#{page.delicious_user}?title=&count=#{page.delicious_count}&sort=date&extended")
     #footer
       .page_width
         Copyright &copy; #{Time.now.strftime('%Y')} - #{page.blog_title} -
