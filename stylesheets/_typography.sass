@@ -5,7 +5,7 @@
 
 +general-typography
 =heading-font
-  +serif-font
+  +sans-font
 =quote-font
   +serif-font
 
@@ -19,6 +19,13 @@ h1,h2,h3,h4,h5,h6
   +heading-font
   letter-spacing: -1px
 
+!button = darken(#57b42c, 8)
+!hover = mix(red, yellow)
+!active = darken(!hover, 12)
+a.button, button
+  +fancy-button-structure
+  +fancy-button-colors(!button, !hover, !active)
+  
 blockquote
   +quote-font
   font-style: italic
