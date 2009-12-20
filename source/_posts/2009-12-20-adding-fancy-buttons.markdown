@@ -12,6 +12,9 @@ Just going with the default:
 
 #####Examples:
 
+    <button>Click me</button>
+    <a class="button" href="#">Click me</a>
+
 <button>Click me</button> <a class="button" href="#">Click me</a>
 
 Using the variable `!button` with `darken(#57b42c, 8)` function from `compass-colors`:
@@ -37,3 +40,5 @@ Using the default structure but with customized colors:
     a.button, button
         +fancy-button-structure
         +fancy-button-colors(!button, !hover, !active)
+
+For grained details, [follow the link](http://brandonmathis.com/projects/fancy-buttons/).
