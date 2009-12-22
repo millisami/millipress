@@ -1,5 +1,6 @@
 ---
 title: Hello World! I'm Octopress!
+exerpt: <img src="/content/blog/2009/i_shot_the_serif.jpg" alt="I shot the serif" title="I shot the serif" width="60px" class="left"/> The sun was setting just past the x-height of the horizon. Bodoni had been pressing on since daybreak, tracking was getting narrower, and he knew his bounty lay over the next hill
 ---
 
 **Octopress is a blogging framework designed for hackers**, based on [Jekyll](http://github.com/mojombo/jekyll) the blog aware static site generator powering [Github pages](http://pages.github.com/).
